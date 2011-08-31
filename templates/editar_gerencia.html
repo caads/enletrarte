@@ -1,0 +1,62 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    <title>Gerência - Avaliação</title>
+    </head>
+<body>
+
+<h2>Nome : {{ projeto.nomeProj }}</h2>
+CPF : {{ inscrito.cpf }}
+Endereço : {{ inscrito.endereco }}
+Bairro : {{ inscrito.bairro }}
+CEP : {{ inscrito.cep }}
+Cidade : {{ inscrito.cidade }}
+UF : {{ inscrito.uf }}
+Telefone : {{ inscrito.telefone }}
+Celular : {{ inscrito.celular }}
+E-mail : {{ inscrito.email }}
+Instituicao : {{ inscrito.instituicao }}
+Vinculo : {{ inscrito.vinculo }}
+Qual? : {{ inscrito.outro_1 }}
+Titulação : {{ inscrito.titulacao }}
+Qual? : {{ inscrito.outro_2 }}
+Participacao : {{ inscrito.participacao }}
+Deseja Publicar CD? : {{ inscrito.pub }}
+Minicurso : {{ inscrito.minicurso }}
+Data de Inscrição : {{ inscrito.data_inscricao }}
+
+<form id="form" name="form" action="/editar_gerencia/{{ codigo }}/" method="POST">{% csrf_token %}
+    <div class="field"> 
+		<label for="Aprovado">Aprovado:</label>
+		<div class="Aprovado" >        	
+           {{ a.aprovado }}
+		</div>
+	</div>	
+        {{ a.id_inscritos }}
+		{{ a.nome }}
+		{{ a.cpf }}
+		{{ a.endereco }}
+		{{ a.bairro }}
+		{{ a.cep }}
+		{{ a.cidade }}
+		{{ a.uf }}
+		{{ a.telefone }}
+		{{ a.celular }}
+		{{ a.email }}
+		{{ a.instituicao }}
+		{{ a.vinculo }}
+		{{ a.outro_1 }}
+		{{ a.titulacao }}
+		{{ a.outro_2 }}
+		{{ a.participacao }}
+		{{ a.pub }}
+		{{ a.minicurso }}
+		{{ a.data_inscricao }}
+        {{ a.aprovado }}
+	</div>
+	<input id="botao" type="button" name="Submit" value="Aprovado" >
+	<input id="botao" type="button" name="Submit" value="Não Aprovado">
+</form>
+<a href="/principal">Voltar</a>
+</body>
+</html>

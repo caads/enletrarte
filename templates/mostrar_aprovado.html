@@ -1,0 +1,90 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/site.css">
+    <script type="text/javascript" src="{{ MEDIA_URL }}/site.js"></script>
+    <title>Gerência - Avaliação </title>
+    </head>
+<body>
+<div class="content"><center>
+<h2>Inscrição</h2><br>
+    Nome : {{ inscrito.nome }}<br>
+    CPF : {{ inscrito.cpf }}<br>
+    Endereço : {{ inscrito.endereco }}<br>
+    Bairro : {{ inscrito.bairro }}<br>
+    CEP : {{ inscrito.cep }}<br>
+    Cidade : {{ inscrito.cidade }}<br>
+    UF : {{ inscrito.uf }}<br>
+    Telefone : {{ inscrito.telefone }}<br>
+    Celular : {{ inscrito.celular }}<br>
+    E-mail : {{ inscrito.email }}<br>
+    Instituicao : {{ inscrito.instituicao }}<br>
+    {% if inscrito.vinculo == 'AG' %}
+       Vinculo : Aluno de Graduação <br>
+    {% endif %}
+
+    {% if inscrito.vinculo == 'AE' %}
+        Vinculo : Aluno de Especialização/Aperfeiçoamento <br>
+    {% endif %}
+
+    {% if inscrito.vinculo == 'AM' %}
+        Vinculo : Aluno de Mestrado <br>
+    {% endif %}
+
+    {% if inscrito.vinculo == 'AD' %}
+        Vinculo : Aluno de Doutorado <br>
+    {% endif %}
+
+    {% if inscrito.vinculo == 'PR' %}
+        Vinculo : Professor<br>
+    {% endif %}
+
+    {% if inscrito.vinculo == 'OU' %}
+        Vinculo : {{ inscrito.outro_1 }}<br> 
+    {% endif %}
+
+    {% if inscrito.titulacao == 'DT' %}
+        Titulação : Doutor <br> 
+    {% endif %}
+
+    {% if inscrito.titulacao == 'MT' %}
+        Titulação : Mestre <br> 
+    {% endif %}
+
+    {% if inscrito.titulacao == 'ES' %}
+        Titulação : Especialista <br> 
+    {% endif %}
+
+    {% if inscrito.titulacao == 'GR' %}
+        Titulação : Graduado <br> 
+    {% endif %}
+
+    {% if inscrito.titulacao == 'GN' %}
+        Titulação : Graduando <br> 
+    {% endif %}
+
+    {% if inscrito.titulacao == 'OU' %}
+        Titulação : {{ inscrito.outro_2 }} <br> 
+    {% endif %}
+
+    {% if inscrito.participacao == 'AO' %}
+        Participação : Apenas Ouvinte <br> 
+    {% endif %}
+
+    {% if inscrito.participacao == 'AC' %}
+        Participação : Apresentador de Comunicação<br> 
+    {% endif %}
+
+    {% if inscrito.participacao == 'AP' %}
+        Participação : Apresentador de Pôster<br> 
+    {% endif %}
+
+    Deseja Publicar CD? : {{ inscrito.pub }}<br>
+    Minicurso : {{ inscrito.minicurso }}<br>
+    Data de Inscrição : {{ inscrito.data_inscricao }}<br>
+    Situação: {{ inscrito.situacao }}<br><br>
+    <input id="botao" type="button" name="Submit" value="Voltar" onclick="window.location='/principal'"><br><br>
+    </center>
+</div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/site.css">
+    <script type="text/javascript" src="{{ MEDIA_URL }}/site.js"></script>
+    <title>Gerência - Avaliação </title>
+    </head>
+<body>
+<div class="content"><center>
+<h2>Inscrição</h2>
+    Nome : {{ inscrito.nome }}<br>
+    CPF : {{ inscrito.cpf }}<br>
+    Endereço : {{ inscrito.endereco }}<br>
+    Bairro : {{ inscrito.bairro }} <br>
+    CEP : {{ inscrito.cep }}<br>
+    Cidade : {{ inscrito.cidade }}<br>
+    UF : {{ inscrito.uf }}<br>
+    Telefone : {{ inscrito.telefone }}<br>
+    Celular : {{ inscrito.celular }}<br>
+    E-mail : {{ inscrito.email }}<br>
+    Instituicao : {{ inscrito.instituicao }}<br>
+    {% if inscrito.vinculo == 'AG' %}
+       Vinculo : Aluno de Graduação <br>
+    {% endif %}
+
+    {% if inscrito.vinculo == 'AE' %}
+        Vinculo : Aluno de Especialização/Aperfeiçoamento <br>
+    {% endif %}
+
+    {% if inscrito.vinculo == 'AM' %}
+        Vinculo : Aluno de Mestrado <br>
+    {% endif %}
+
+    {% if inscrito.vinculo == 'AD' %}
+        Vinculo : Aluno de Doutorado <br>
+    {% endif %}
+
+    {% if inscrito.vinculo == 'PR' %}
+        Vinculo : Professor<br>
+    {% endif %}
+
+    {% if inscrito.vinculo == 'OU' %}
+        Vinculo : {{ inscrito.outro_1 }}<br> 
+    {% endif %}
+
+    {% if inscrito.titulacao == 'DT' %}
+        Titulação : Doutor <br> 
+    {% endif %}
+
+    {% if inscrito.titulacao == 'MT' %}
+        Titulação : Mestre <br> 
+    {% endif %}
+
+    {% if inscrito.titulacao == 'ES' %}
+        Titulação : Especialista <br> 
+    {% endif %}
+
+    {% if inscrito.titulacao == 'GR' %}
+        Titulação : Graduado <br> 
+    {% endif %}
+
+    {% if inscrito.titulacao == 'GN' %}
+        Titulação : Graduando <br> 
+    {% endif %}
+
+    {% if inscrito.titulacao == 'OU' %}
+        Titulação : {{ inscrito.outro_2 }} <br> 
+    {% endif %}
+
+    {% if inscrito.participacao == 'AO' %}
+        Participação : Apenas Ouvinte <br> 
+    {% endif %}
+
+    {% if inscrito.participacao == 'AC' %}
+        Participação : Apresentador de Comunicação<br> 
+        Deseja Publicar CD? : {{ inscrito.pub }}<br>
+    {% endif %}
+
+    {% if inscrito.participacao == 'AP' %}
+        Participação : Apresentador de Pôster<br> 
+        Deseja Publicar CD? : {{ inscrito.pub }}<br>    
+    {% endif %}<br>
+
+
+    {% if inscrito.reserva == 'SIM' %}
+        Primeira Opção : {{ inscrito.minicurso }}<br>
+        Inscrições Aprovadas : {{ insc_1 }} <br>
+        Total de Vagas : {{ vagas_1 }} <br>
+        Vagas Restantes : {{ rest_1 }} <br><br>
+        Segunda Opção : {{ inscrito.minicurso_2 }}<br>
+        Inscrições Aprovadas : {{ insc_2 }} <br>
+        Total de Vagas : {{ vagas_2 }} <br>
+        Vagas Restantes: {{ rest_2 }} <br><br>
+        <i>Obs.: As vagas da primeira e segunda opção estão preenchidas<br>
+        O inscrito ficará como reserva, devendo ser alocado em algum outro minicurso </i><br><br>         
+    {% else %}
+        Minicurso*: {{ inscrito.minicurso }}<br>
+        Inscrições Aprovadas : {{ insc_1 }} <br>
+        Vagas Restantes: {{ rest_1 }} <br> <br>
+     <i>* Mini-Curso apresentado de acordo com as vagas disponiveis e opções selecionadas pelo inscrito.</i><br>
+    {% endif %}<br>
+    Data de Inscrição : {{ inscrito.data_inscricao }}<br>
+</center>
+    <form id="form" name="form" action="/editar_inscrito/{{ codigo }}/" method="POST">{% csrf_token %}
+        <div class="field"> 
+		    <label for="Aprovado"></label><br>
+		    <div class="Aprovado" >        	<br>
+               {{ a.situacao }}
+		    </div>
+	    </div>	
+            {{ a.id_inscritos }}
+		    {{ a.nome }}
+		    {{ a.cpf }}
+		    {{ a.endereco }}
+		    {{ a.bairro }}
+		    {{ a.cep }}
+		    {{ a.cidade }}
+		    {{ a.uf }}
+		    {{ a.telefone }}
+		    {{ a.celular }}
+		    {{ a.email }}
+		    {{ a.instituicao }}
+		    {{ a.vinculo }}
+		    {{ a.outro_1 }}
+		    {{ a.titulacao }}
+		    {{ a.outro_2 }}
+		    {{ a.participacao }}
+		    {{ a.pub }}
+		    {{ a.minicurso }}
+            {{ a.minicurso_2 }}
+		    {{ a.data_inscricao }}
+            {{ a.emails_env }}
+            {{ a.reserva }}
+
+    <center>
+	    <input id="botao" type="button" name="Submit" value="Confirmar" onclick="validaCamposA();">
+	    <input id="botao" type="button" name="Submit" value="Recusar" onclick="validaCamposN();">
+	    <input id="botao" type="button" name="Submit" value="Voltar" onclick="window.location='/principal'"><br><br>
+    </center>
+    </form>
+</div>
+
+
+</div>
+</body>
+</html>

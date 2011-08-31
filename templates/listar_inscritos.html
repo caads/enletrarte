@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Listar Aprovados</title>
+  <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/site.css">
+</head>
+<body>
+<div class="content">
+<center><br/>
+Inscrições aprovadas para o minicurso: <b>{{ minicurso }} </b><br>
+    vagas: {{ vagas }}, inscritos: {{ tinscritos }} 
+	<center><table border=1 cellspacing=0 cellpadding=5 bordercolor="#000000"> 
+	
+	<tr>
+		<th>Nome</th>
+		<th>CPF</th>
+		<th>Telefone</th>
+		<th>E-mail</th>
+		<th>Situação</th>
+		<th>Reserva</th>
+	</tr>
+	<tr>
+		<td>		
+			{% for insc in inscritos %}
+				{{ insc.nome}}<br>
+			{% endfor %}
+		</td>
+		
+		<td>		
+			{% for insc in inscritos %}
+				{{ insc.cpf}}<br>
+			{% endfor %}
+		</td>
+
+		<td>		
+			{% for insc in inscritos %}
+				{{ insc.telefone}}<br>
+			{% endfor %}
+		</td>
+
+		<td>		
+			{% for insc in inscritos %}
+				{{ insc.email}}<br>
+			{% endfor %}
+		</td>
+
+
+		<td>		
+			{% for insc in inscritos %}
+				{{ insc.situacao}}<br>
+			{% endfor %}
+		</td>
+
+		<td>		
+			{% for insc in inscritos %}
+				{{ insc.reserva}}<br>
+			{% endfor %}
+		</td>
+
+	</tr>	
+	</table> 
+    <br><input id="botao" type="button" name="Submit" value="Voltar" onclick="window.location='/principal'">
+	</center>
+	</body>
+</html>
+
+    <br><br><br>
+	<a href="/logout/">Para encerrar sua sessão Clique Aqui!</a><br /><br />
+</center>
+</div>
+</body>
+</html>

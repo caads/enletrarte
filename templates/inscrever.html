@@ -1,0 +1,56 @@
+<html>
+<head>
+  <title>V - ENLETRARTE - Instituto Federal Fluminense</title>
+  <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/site.css">
+  <script type="text/javascript" src="{{ MEDIA_URL }}/jquery.js"></script>
+  <script type="text/javascript" src="{{ MEDIA_URL }}/maskedinput.js"></script>
+  <script type="text/javascript" src="{{ MEDIA_URL }}/site.js"></script>
+</head>
+<body>
+  <div class="content">
+    {% if success %}
+      <h1 id="done">Inscrição Cadastrada!</h1>
+      <center>
+      <h3 id="mail">Foi enviado um e-mail para "{{ email }}" com os dados para o pagamento!</h3>
+      </center>
+    {% endif %}
+    <div id="iff">
+      <img src="{{ MEDIA_URL }}/iff.gif" alt="Instituto Federal Fluminense" title="Instituto Federal Fluminense"/><br>
+    </div>
+    <div id="logos">
+      <img src="{{ MEDIA_URL }}/logo.jpg" alt="V - ENLETRARTE" title="V - ENLETRARTE">
+    </div>
+    <div id="info">
+      <h2>V - ENLETRARTE</h2>
+      <h3>19/20/21 DE OUTUBRO DE 2011<h3>
+      <p>Ficha de Inscrição</p>
+    </div>
+    <div class="inscricoes">
+    <form method="POST" action="/">
+      {% csrf_token %}
+      {% for field in form %}
+        <div id="{{ field.name }}">
+          <p class="field_title">{{ field.label_tag }}:
+            {% if field.help_text %}
+              <span class="help_text">({{ field.help_text }})</span>
+            {% endif %}
+          </p>
+          {% if field.errors %}
+            {{ field.errors }}
+          {% endif %}
+          {{ field }}
+        </div>
+      {% endfor %}<center>
+      <input type="submit"></center>
+    </form>
+    </div>
+  </div>
+  <div id="footer">
+    <p>
+      <img src="{{ MEDIA_URL }}/DTIC_Logo.jpg" alt="DTIC" title="CAADS" width=100 height=60>
+      <a href="http://www.djangoproject.com/"><img src="http://media.djangoproject.com/img/badges/djangomade124x25.gif" border="0" alt="Made with Django." title="Made with Django." /></a>
+
+    </p>
+  </div>
+</body>
+</html>

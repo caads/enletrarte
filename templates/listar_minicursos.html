@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>TESTE</title>
+  <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/site.css">
+</head>
+<body>
+<div class="content">
+<center><br/>
+Bem vindo! <br/>
+    <h3>Minicursos</h3>
+    {% for cursos in minicursos %}
+		    <p><a href="/listar_inscritos/{{ cursos.id_minicurso }}">{{ cursos.nome }}</a> </p>
+  	{% endfor %} 
+    <br><br><br>
+	<a href="/logout/">Para encerrar sua sessão Clique Aqui!</a><br /><br />
+</center>
+</div>
+</body>
+</html>

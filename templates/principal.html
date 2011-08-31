@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>V - ENLETRARTE - Aprovar inscrições</title>
+  <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/site.css">
+</head>
+<body>
+<div class="content">
+<center>
+Bem vindo! <br/><br/>
+    <h3>Inscricoes:</h3>
+    <b>Pendentes:</b>		
+    {% for dados in inscritos %}
+        {% if dados.situacao == "Pendente" %}
+		    <p>
+		    <a href="/editar_inscrito/{{ dados.id_inscritos }}/">{{ dados.nome }}</a>
+		    Situação = {{ dados.situacao }}
+		    </p>
+        {% endif %}
+	{% endfor %} 
+    <br><br><br>
+    <b>Aprovados por minicurso:</b>       
+    <br><br>
+	<center><table border=1 cellspacing=0 cellpadding=5 bordercolor="#000000"> 
+	
+	<tr>
+		<th>Minicurso</th>
+		<th>Inscritos</th>
+		<th>Vagas</th>
+	</tr>
+	<tr>
+		<td>		
+			{% for curso in minicursos %}
+                <a href="/listar_inscritos/{{ curso.id_minicurso }}">{{ curso.nome }}</a><br>
+			{% endfor %}
+		</td>
+
+		<td>		
+			{% for curso in minicursos %}
+				{{ curso.inscritos}}<br>
+			{% endfor %}
+		</td>
+
+		<td>		
+			{% for curso in minicursos %}
+				{{ curso.max_inscritos}}<br>
+			{% endfor %}
+		</td>
+
+
+
+	</tr>	
+	</table> 
+	
+    <br><br><br>
+    <b>Reprovados:</b>		
+    {% for dados in inscritos %}
+        {% if dados.situacao == "Reprovado"%}
+		    <p>
+		    <a href="/mostrar_aprovado/{{ dados.id_inscritos }}/">{{ dados.nome }}</a>
+		    Situação = {{ dados.situacao }}
+		    </p>
+        {% endif %}
+	{% endfor %} 
+    <br><br><br>
+	<a href="/logout/">Para encerrar sua sessão Clique Aqui!</a><br /><br />
+</center>
+</div>
+</body>
+</html>
